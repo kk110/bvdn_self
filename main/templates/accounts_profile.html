@@ -1,0 +1,43 @@
+{% extends 'basemain.html' %}
+
+{% block title %}个人信息修改{% endblock %}
+
+{% block content %}
+    <h2>Here!!</h2>
+
+    <div id="app">
+        <table class="table table-hover form-group">
+            <thread>
+                <tr>
+                    <th>编号</th>
+                    <th>项目</th>
+                    <th>值</th>
+                </tr>
+            </thread>
+            <tbody>
+                <tr>
+                    <td>0</td>
+                    <td>账户（不可改）</td>
+                    <td><span v-text="email" class="form-control"></span></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>姓名</td>
+                    <td><input v-model="name" class="form-control"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block vuejs %}
+    <script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            email: '{{ request.user.email }}',
+            name: '{{ request.user.name }}',
+        }
+    });
+    </script>
+{% endblock %}
